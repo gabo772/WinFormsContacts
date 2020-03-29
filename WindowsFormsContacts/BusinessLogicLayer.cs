@@ -9,5 +9,21 @@ namespace WindowsFormsContacts
     public class BusinessLogicLayer
     {
 
+        private DataAccessLayer _dataAccessLayer;
+
+        public BusinessLogicLayer()
+        {
+            _dataAccessLayer = new DataAccessLayer();
+        }
+
+        public Contact SaveContact(Contact contact)
+        {
+            if (contact.Id == 0)
+                _dataAccessLayer.InsertContact(contact);
+            //else
+            //_dataAccessLayer.updateContact
+            return contact;
+        }
+
     }
 }

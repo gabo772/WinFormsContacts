@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogicLayer.cs" />
+    <Compile Include="Contact.cs" />
     <Compile Include="ContactDetails.cs">
       <SubType>Form</SubType>
     </Compile>
