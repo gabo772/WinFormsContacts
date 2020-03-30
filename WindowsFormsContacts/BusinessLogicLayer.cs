@@ -25,5 +25,10 @@ namespace WindowsFormsContacts
             return contact;
         }
 
+        public List<Contact> GetContacts() 
+        {
+            return _dataAccessLayer.GetContacts();
+        }
+
     }
 }

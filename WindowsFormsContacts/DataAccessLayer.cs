@@ -49,7 +49,39 @@ namespace WindowsFormsContacts
             }
         }
 
-        
+        public List<Contact> GetContacts() 
+        {
+            List<Contact> contacts = new List<Contact>();
+            try
+            {
+                conn.Open();
+                string query = @"SELECT Id, FirstName, LastName, Phone, Address
+                                FROM Contacts";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read()) 
+                {
+                    contacts.Add(new Contact{
+                        Id=int.Parse(reader["Id"].ToString()),
+                        FirstName=reader["FirstName"].ToString(),
+                        LastName= reader["LastName"].ToString(),
+                        Phone= reader["Phone"].ToString(),
+                        Address= reader["Address"].ToString()
+                    });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                conn.Close();
+            }
+            return contacts;
+        }
 
     }
 }

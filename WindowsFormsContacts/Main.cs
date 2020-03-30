@@ -12,9 +12,12 @@ namespace WindowsFormsContacts
 {
     public partial class Main : Form
     {
+
+        private BusinessLogicLayer _businessLogicLayer;
         public Main()
         {
             InitializeComponent();
+            _businessLogicLayer = new BusinessLogicLayer();
         }
 
 
@@ -35,9 +38,21 @@ namespace WindowsFormsContacts
         private void openContactDetailsDialog()
         {
             ContactDetails contact = new ContactDetails();
-            contact.ShowDialog();
+            contact.ShowDialog(this);
         }
         #endregion
 
+        private void Main_Load(object sender, EventArgs e)
+        {
+            PopulateContacts();
+
+        }
+
+        public void PopulateContacts() 
+        {
+           List<Contact> contacts= _businessLogicLayer.GetContacts();
+            gridContacts.DataSource = contacts;
+
+        }
     }
 }

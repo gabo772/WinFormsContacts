@@ -31,6 +31,12 @@ namespace WindowsFormsContacts
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            SaveContact();
+            ((Main)this.Owner).PopulateContacts();
+        }
+
+        private void SaveContact() 
+        {
             Contact contacto = new Contact();
             contacto.FirstName = txtFirstName.Text;
             contacto.LastName = txtLastName.Text;
